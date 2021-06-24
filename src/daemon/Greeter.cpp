@@ -34,7 +34,7 @@
 #include <QtCore/QProcess>
 
 namespace SDDM {
-    Greeter::Greeter(QObject *parent) : QObject(parent) {
+    Greeter::Greeter(Display *parent) : QObject(parent), m_display(parent) {
         m_metadata = new ThemeMetadata(QString());
         m_themeConfig = new ThemeConfig(QString());
     }
@@ -44,10 +44,6 @@ namespace SDDM {
 
         delete m_metadata;
         delete m_themeConfig;
-    }
-
-    void Greeter::setDisplay(Display *display) {
-        m_display = display;
     }
 
     void Greeter::setAuthPath(const QString &authPath) {
